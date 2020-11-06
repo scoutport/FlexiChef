@@ -87,18 +87,16 @@
 </template>
 
 <script>
-import Recipe from "@/database/models/Recipe";
-import Ingredient from "@/database/models/Ingredient";
 import * as moment from "moment";
 
 export default {
   name: "DataManagement",
   computed: {
     amountRecipes() {
-      return Recipe.query().count();
+      return this.$store.state.recipes.length;
     },
     amountIngredients() {
-      return Ingredient.query().count();
+      return this.$store.state.ingredients.length;
     }
   },
   methods: {

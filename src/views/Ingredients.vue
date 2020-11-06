@@ -63,7 +63,6 @@
 </template>
 
 <script>
-import Ingredient from "@/database/models/Ingredient";
 import CreateIngredientModal from "@/components/CreateIngredientModal";
 
 export default {
@@ -78,12 +77,12 @@ export default {
   },
   computed: {
     ingredients() {
-      return Ingredient.all();
+      return this.$store.state.ingredients;
     }
   },
   methods: {
     removeIngredient(id) {
-      Ingredient.delete(id);
+      this.$store.commit("deleteIngredient", id);
     }
   }
 };

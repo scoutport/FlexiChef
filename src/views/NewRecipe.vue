@@ -19,7 +19,6 @@
 <script>
 import CreateIngredientModal from "@/components/CreateIngredientModal";
 import QuillEditor from "@/components/QuillEditor";
-import Recipe from "@/database/models/Recipe";
 
 export default {
   name: "NewRecipe",
@@ -42,7 +41,7 @@ export default {
   },
   mounted() {
     if (this.$route.params.id !== "new") {
-      this.recipe = Recipe.find(this.$route.params.id);
+      this.recipe = this.$store.getters.recipe(this.$route.params.id);
     }
   }
 };

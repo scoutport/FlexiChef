@@ -113,8 +113,6 @@
 </template>
 
 <script>
-import Ingredient from "@/database/models/Ingredient";
-
 export default {
   name: "CreateIngredientModal",
   data() {
@@ -137,16 +135,13 @@ export default {
     addIngredient() {
       console.log(this.newIngredientForm);
 
-      Ingredient.insert({
-        data: {
-          id: Ingredient.query().count(),
+      this.$store.commit("addIngredient",{
           name: this.newIngredientForm.name,
           unit: this.newIngredientForm.unit,
           neededPerPerson: this.newIngredientForm.neededPerPerson,
           contentPerPackage: this.newIngredientForm.contentPerPackage,
           pricePerPackage: this.newIngredientForm.pricePerPackage,
           diets: this.newIngredientForm.diets
-        }
       });
     }
   }
